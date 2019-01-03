@@ -1,0 +1,23 @@
+{
+  "name": "curso_mean2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ESNJS/curso_mean2.git"
+  },
+  "author": "Erik Netto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ESNJS/curso_mean2/issues"
+  },
+  "homepage": "https://github.com/ESNJS/curso_mean2#readme",
+  "dependencies": {
+    "mongoose": "^5.4.1",
+    "nodemon": "^1.18.9"
+  }
+}
