@@ -16,7 +16,7 @@ function saveUser (req, res){
 
   user.name = params.name;
   user.surname = params.surname;
-  user.email = params.email;
+  user.email = params.email.toLowerCase();
   user.role = 'ROLE_USER';
   user.image = 'null';
 
@@ -46,7 +46,39 @@ function saveUser (req, res){
   };
 };
 
+function loginUser(req, res){
+  var params = req.body;
+
+  var email = params.email;
+  var password = params.password;
+
+  User.findOne({email: email.toLowerCase()}, (err, user) => {
+    if(err){
+      res.status(500).send({message: 'Error en la peticion'});
+    }else{
+      if(!user){
+        res.status(404).send({message: 'Usuario inexistente'});
+      }else{
+        // Comprobar la Contraseña
+        bcrypt.compare(password, user.password, function(err, check) {
+          if(check){
+            //Devolcer los datos del usuario logueado
+            if(params.gethash){
+              //Devolver un Token de JWT
+            }else{
+              res.status(200).send({user});
+            };
+          }else{
+            res.status(404).send({message: 'Usuario No ha podido loguearse'});
+          }
+        });
+      };
+    };
+  });
+};
+
 module.exports = {
   pruebas,
-  saveUser
+  saveUser,
+  loginUser
 };
