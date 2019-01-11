@@ -19,7 +19,7 @@ exports.ensureAuth = function(req, res, next){
     };
 
   }catch(ex){
-    console.log(ex);
+    //console.log(ex);
     return res.status(404).send({message: 'El Token no es valido'})
   };
 
