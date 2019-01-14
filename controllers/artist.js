@@ -8,7 +8,21 @@ var Album = require('../models/album');
 var Song = require('../models/song');
 
 function getArtist(req, res){
-  res.status(200).send({message: "Metodo getArtist del controlador Artist.js"});
+  var artistId = req.params.id;
+
+  Artist.findById(artistId, (err, artist) => {
+    if(err){
+      res.status(500).send({message: "Error en la peticion"});
+    }else{
+      if(!artist){
+        res.status(404).send({message: "No se ha encontrado al artista"});
+      }else{
+        res.status(404).send({artist});
+      };
+    };
+  });
+
+
 };
 
 function saveArtist(req, res){
