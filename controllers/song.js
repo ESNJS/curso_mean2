@@ -46,7 +46,7 @@ function getSongs(req, res){
       res.status(500).send({message: "Error en la peticion"});
     }else{
       if(!songs){
-        res.status(404).send({message: "No se ha encontrado albums"});
+        res.status(404).send({message: "No se ha encontrado Song"});
       }else{
         res.status(200).send({songs});
       };
@@ -77,10 +77,28 @@ function saveSong(req, res){
   });
 };
 
+function updateSong (req, res){
+  var songId = req.params.id;
+  var update = req.body;
+
+  Song.findOneAndUpdate({_id: songId}, update, (err, songUpdated) => {
+    if(err){
+      res.status(500).send({message: "Error al actualizar el song"});
+    }else{
+      if(!songUpdated){
+        res.status(404).send({message: "Song no actualizado"});
+      }else{
+        res.status(200).send({album: songUpdated});
+      };
+    };
+  });
+};
+
 
 
 module.exports = {
   getSong,
   saveSong,
   getSongs,
+  updateSong
 };
