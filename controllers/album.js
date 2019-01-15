@@ -71,9 +71,27 @@ function saveAlbum(req, res){
   });
 };
 
+function updateAlbum (req, res){
+  var albumId = req.params.id;
+  var update = req.body;
+
+  Album.findOneAndUpdate({_id: albumId}, update, (err, albumUpdated) => {
+    if(err){
+      res.status(500).send({message: "Error al actualizar el album"});
+    }else{
+      if(!albumUpdated){
+        res.status(404).send({message: "Album no actualizado"});
+      }else{
+        res.status(200).send({album: albumUpdated});
+      };
+    };
+  });
+};
+
 
 module.exports = {
   getAlbum,
   saveAlbum,
-  getAlbums
+  getAlbums,
+  updateAlbum
 };
