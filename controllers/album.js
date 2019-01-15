@@ -65,7 +65,7 @@ function saveAlbum(req, res){
       if(!albumStored){
         res.status(404).send({message: "Album no guardado"});
       }else{
-        res.status(200).send({artist: albumStored});
+        res.status(200).send({album: albumStored});
       };
     };
   });

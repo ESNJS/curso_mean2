@@ -71,7 +71,7 @@ function saveSong(req, res){
       if(!songStored){
         res.status(404).send({message: "Song no guardado"});
       }else{
-        res.status(200).send({artist: songStored});
+        res.status(200).send({song: songStored});
       };
     };
   });
@@ -88,7 +88,24 @@ function updateSong (req, res){
       if(!songUpdated){
         res.status(404).send({message: "Song no actualizado"});
       }else{
-        res.status(200).send({album: songUpdated});
+        res.status(200).send({song: songUpdated});
+      };
+    };
+  });
+};
+
+function deleteSong (req, res){
+  var songId = req.params.id;
+  var remove = req.body;
+
+  Song.findOneAndDelete({_id: songId}, remove, (err, songRemoved) => {
+    if(err){
+      res.status(500).send({message: "Error al remove el song"});
+    }else{
+      if(!songRemoved){
+        res.status(404).send({message: "Song no removed"});
+      }else{
+        res.status(200).send({song: songRemoved});
       };
     };
   });
@@ -100,5 +117,6 @@ module.exports = {
   getSong,
   saveSong,
   getSongs,
-  updateSong
+  updateSong,
+  deleteSong
 };
