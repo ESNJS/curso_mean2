@@ -54,7 +54,7 @@ function saveArtist(req, res){
 
   var params = req.body;
   artist.name = params.name;
-  params.description = params.description;
+  artist.description = params.description;
   artist.image = 'null';
 
   artist.save((err, artistStored) => {
