@@ -15,7 +15,14 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //---------------------------CABECERAS
+app.use((req, resp, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+  res.header('Access-Control-Allow-Method', 'GET, POST, PUT, OPTIONS, DELETE');
+  res.header('Allow', 'GET, POST, PUT, OPTIONS, DELETE');
 
+  next();
+});
 
 
 //---------------------------RUTAS BASE
