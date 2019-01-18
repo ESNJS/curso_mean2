@@ -11,6 +11,7 @@ import { User } from './models/user';
 export class AppComponent implements OnInit{
   public title = 'Musify';
   public user: User;
+  public user_register: User;
   public identity;
   public token;
   public errorMessage;
@@ -19,14 +20,15 @@ export class AppComponent implements OnInit{
     private _userService:UserService
   ){
     this.user = new User('','','','','','ROLE_USER','');
+    this.user_register = new User('','','','','','ROLE_USER','');
   };
 
   ngOnInit(){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
 
-    console.log(this.identity);
-    console.log(this.token);
+    //console.log(this.identity);
+    //console.log(this.token);
   }
 
   public onSubmit(){
@@ -69,7 +71,7 @@ export class AppComponent implements OnInit{
               if(errorMessage != null){
                 var body = JSON.parse(error._body);
                 this.errorMessage = body.message;
-                console.log(error);
+                //console.log(error);
               }
             }
           );//FIN de Conseguir token para enviarselo a cada peticion http
@@ -81,7 +83,7 @@ export class AppComponent implements OnInit{
         if(errorMessage != null){
           var body = JSON.parse(error._body);
           this.errorMessage = body.message;
-          console.log(error);
+          //console.log(error);
         }
       }
     );
@@ -94,4 +96,9 @@ export class AppComponent implements OnInit{
     this.identity = null;
     this.token = null;
   };
+
+  onSubmitRegister(){
+    console.log(this.user_register);
+  };
+
 }
