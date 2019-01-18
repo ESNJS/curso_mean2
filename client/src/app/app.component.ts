@@ -21,8 +21,7 @@ export class AppComponent implements OnInit{
   };
 
   ngOnInit(){
-    var texto = this._userService.signup();
-    console.log(texto);
+
   }
 
   public onSubmit(){
