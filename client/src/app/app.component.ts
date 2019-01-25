@@ -59,7 +59,7 @@ export class AppComponent implements OnInit{
               }
               else{
                 // Crear elemento el localStorage para tener el token disponible
-                localStorage.setItem('identity', token);
+                localStorage.setItem('token', token);
                 this.user = new User('','','','','','ROLE_USER','');
                 //console.log(token);
                 //console.log(identity);
