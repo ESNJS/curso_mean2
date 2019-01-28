@@ -10,14 +10,15 @@ import { User } from '../models/user';
 
 export class UserEditComponent implements OnInit{
   public titulo: string;
-  public user: User;
+  public user:User;
   public identity;
   public token;
+  public alertMessage;
 
   constructor(
     private _userService: UserService
   ){
-    this.titulo = 'actualizar mis datos';
+    this.titulo = 'Actualizar mis datos';
 
 
     //LocalStorage
@@ -32,6 +33,27 @@ export class UserEditComponent implements OnInit{
 
   onSubmit(){
     console.log(this.user)
+
+    this._userService.updateUser(this.user).subscribe(
+      response => {
+        if(!response.user){
+          this.alertMessage = "El usuario no se ha actualizado";
+        }else{
+          //this.user = response.user;
+          localStorage.setItem('identity', JSON.stringify(this.user));
+          this.alertMessage = "El usuario se ha actualizado";
+        };
+      },
+      error => {
+        var errorMessage = <any>error;
+
+        if(errorMessage != null){
+          var body = JSON.parse(error._body);
+          this.alertMessage = body.message;
+          //console.log(error);
+        }
+      }
+    );
   };
 
 

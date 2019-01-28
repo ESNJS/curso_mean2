@@ -37,7 +37,7 @@ export class UserService{
                      .map(res => res.json());
   };
 
-  update_user(user_to_update){
+  updateUser(user_to_update){
     let params = JSON.stringify(user_to_update);
 
     let headers = new Headers({
