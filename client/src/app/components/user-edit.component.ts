@@ -10,7 +10,7 @@ import { User } from '../models/user';
 
 export class UserEditComponent implements OnInit{
   public titulo: string;
-  public user:User;
+  public user: User;
   public identity;
   public token;
   public alertMessage;
@@ -19,7 +19,6 @@ export class UserEditComponent implements OnInit{
     private _userService: UserService
   ){
     this.titulo = 'Actualizar mis datos';
-
 
     //LocalStorage
     this.identity = this._userService.getIdentity();
@@ -41,6 +40,7 @@ export class UserEditComponent implements OnInit{
         }else{
           //this.user = response.user;
           localStorage.setItem('identity', JSON.stringify(this.user));
+          document.getElementById('identity_name').innerHTML = this.user.name;
           this.alertMessage = "El usuario se ha actualizado";
         };
       },
