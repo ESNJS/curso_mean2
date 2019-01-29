@@ -103,7 +103,7 @@ export class AppComponent implements OnInit{
 
 
   onSubmitRegister(){
-    console.log(this.user_register);
+    //console.log(this.user_register);
 
     this._userService.register(this.user_register).subscribe(
       response => {

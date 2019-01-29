@@ -30,11 +30,11 @@ export class UserEditComponent implements OnInit{
   };
 
   ngOnInit(){
-    console.log('user-edit.component.ts cargado');
+    //console.log('user-edit.component.ts cargado');
   };
 
   onSubmit(){
-    console.log(this.user)
+    //console.log(this.user)
 
     this._userService.updateUser(this.user).subscribe(
       response => {
@@ -79,7 +79,7 @@ export class UserEditComponent implements OnInit{
 
   fileChangeEvent(fileInput: any){
     this.filesToUpload = <Array<File>>fileInput.target.files;
-    console.log(this.filesToUpload);
+    //console.log(this.filesToUpload);
   };
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>){
