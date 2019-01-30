@@ -10,7 +10,7 @@
       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
       Buscar
     </a>
-    <a [routerLink]="['/artists', 1]">
+    <a [routerLink]="['/artists', 1]" [routerLinkActive]="['actived']">
       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
       Artistas
     </a>
@@ -28,7 +28,7 @@
       {{identity.name}}
     </span>
 
-      <a [routerLink]="['/mis-datos']">
+      <a [routerLink]="['/mis-datos']" [routerLinkActive]="['actived']">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         Mis Datos
       </a>
