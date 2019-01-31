@@ -32,6 +32,7 @@ export class ArtistService{
     });
 
     let options = new RequestOptions({headers: headers});
+    //console.log(this.url+'artist/'+id);
     return this._http.get(this.url+'artist/'+id, options)
                      .map(res => res.json());
   };

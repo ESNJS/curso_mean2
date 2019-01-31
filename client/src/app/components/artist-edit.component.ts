@@ -36,6 +36,31 @@ export class ArtistEditComponent implements OnInit{
 
   ngOnInit(){
     //llamar al metodo de la api para sacar un artista en base a a su id
+    this.getArtist();
+  }
+
+  getArtist(){
+    this._route.params.forEach((params: Params)=>{
+      let id = params['id'];
+
+
+      this._artistService.getArtist(this.token, id).subscribe(
+        response => {
+          if(!response.artist){
+            this._router.navigate(['/']);
+          }else{
+            this.artist = response.artist;
+          }
+        },
+        error => {
+          var errorMessage = <any>error;
+
+          if(errorMessage != null){
+            var body = JSON.parse(error._body);
+          }
+        }
+      );
+    });
   }
 
   onSubmit(){
