@@ -3,6 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
+import { Artist } from '../models/artist';
 //import {map} from 'rxjs/operators';
 
 @Injectable()
