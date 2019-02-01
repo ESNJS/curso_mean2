@@ -70,3 +70,7 @@ html, body{
 .user-image img{
   width: 57px;
 }
+
+.artist_image_for_edit{
+  width: 150px;
+}
