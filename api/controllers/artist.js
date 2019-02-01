@@ -18,7 +18,7 @@ function getArtist(req, res){
       if(!artist){
         res.status(404).send({message: "No se ha encontrado al artista"});
       }else{
-        res.status(404).send({artist});
+        res.status(200).send({artist});
       };
     };
   });
