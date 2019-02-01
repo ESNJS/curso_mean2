@@ -88,6 +88,7 @@ export class ArtistEditComponent implements OnInit{
                 },
                 (error) => {
                     console.log(error);
+                    console.log(this.token);
                 }
               );
             //this.artist = response.artist;
