@@ -74,3 +74,9 @@ html, body{
 .artist_image_for_edit{
   width: 150px;
 }
+
+.artist-image{
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
