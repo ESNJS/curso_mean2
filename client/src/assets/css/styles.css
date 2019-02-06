@@ -96,18 +96,19 @@ html, body{
   height: 245px;
   width: 100%;
   overflow: hidden;
-  background-color: black;
+  background: black;
 }
 
 .artist-item .artist-image img{
   height: 100%;
 }
 
-.artista-item .artist-name{
+.artist-item .artist-name{
   color: white;
   padding: 10px;
+  background: #222326;
 }
 
-.artista-item .artist-name a{
+.artist-item .artist-name a{
   color: white;
 }
