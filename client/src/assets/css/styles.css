@@ -75,8 +75,39 @@ html, body{
   width: 150px;
 }
 
-.artist-image{
-  height: 100px;
-  width: 100px;
+.artist-list{
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+  list-style: none;
+}
+
+.artist-item{
+  width: 23%;
+  margin: 0;
+  padding: 0;
+  height: 317px;
+  border: 1px solid #444;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.artist-item .artist-image{
+  height: 245px;
+  width: 100%;
   overflow: hidden;
+  background-color: black;
+}
+
+.artist-item .artist-image img{
+  height: 100%;
+}
+
+.artista-item .artist-name{
+  color: white;
+  padding: 10px;
+}
+
+.artista-item .artist-name a{
+  color: white;
 }
