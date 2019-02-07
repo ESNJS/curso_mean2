@@ -24,19 +24,19 @@ export class AlbumService{
     return this._http.get(this.url+'artists/'+page, options)
                      .map(res => res.json());
   };
+*/
 
-  getArtist(token, id: string){
+  getAlbum(token, id: string){
     let headers = new Headers({
       'Content-Type':'application/json',
       'Authorization': token
     });
 
     let options = new RequestOptions({headers: headers});
-    //console.log(this.url+'artist/'+id);
-    return this._http.get(this.url+'artist/'+id, options)
+    return this._http.get(this.url+'album/'+id, options)
                      .map(res => res.json());
   };
-*/
+
 
   addAlbum(token, album: Album){
     let params = JSON.stringify(album);
@@ -49,18 +49,18 @@ export class AlbumService{
                      .map(res => res.json());
   };
 
-/*
-  editArtist(token, id:string, artist: Artist){
-    let params = JSON.stringify(artist);
+
+  editAlbum(token, id:string, album: Album){
+    let params = JSON.stringify(album);
     let headers = new Headers({
       'Content-Type':'application/json',
       'Authorization': token
     });
 
-    return this._http.put(this.url+ 'artist/'+id, params, {headers: headers})
+    return this._http.put(this.url+ 'album/'+id, params, {headers: headers})
                      .map(res => res.json());
   };
-
+/*
   deleteArtist(token, id: string){
     let headers = new Headers({
       'Content-Type':'application/json',

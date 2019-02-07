@@ -18,7 +18,7 @@ function getAlbum(req, res){
       if(!album){
         res.status(404).send({message: "No se ha encontrado al artista"});
       }else{
-        res.status(404).send({album});
+        res.status(200).send({album});
       };
     };
   });
