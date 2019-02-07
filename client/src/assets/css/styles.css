@@ -9,6 +9,11 @@ html, body{
   padding-bottom: 4px;
 }
 
+.central{
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .head-title{
   font-size: 20px;
   font-weight: bold;
@@ -86,7 +91,7 @@ html, body{
   width: 23%;
   margin: 0;
   padding: 0;
-  height: 317px;
+  /*height: 317px;*/
   border: 1px solid #444;
   margin-left: 20px;
   margin-top: 20px;
@@ -103,7 +108,7 @@ html, body{
   height: 100%;
 }
 
-.artist-item .artist-name{
+.artist-item .artist-name, .artist-item .buttons{
   color: white;
   padding: 10px;
   background: #222326;
@@ -111,4 +116,17 @@ html, body{
 
 .artist-item .artist-name a{
   color: white;
+  font-weight: bold;
+}
+
+#artist-head-card .image{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  float: left;
+  margin-right: 30px;
+}
+
+#artist-head-card .image img{
+  width: 150px;
 }
