@@ -2,17 +2,20 @@ import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { ArtistService } from '../services/artist.service';
+import { AlbumService } from '../services/album.service';
 import { GLOBAL } from '../services/global';
 import { Artist } from '../models/artist';
+import { Album } from '../models/album';
 
 @Component({
   selector: 'artist-detail',
   templateUrl: '../views/artist-detail.html',
-  providers: [UserService, ArtistService]
+  providers: [UserService, ArtistService, AlbumService]
 })
 
 export class ArtistDetailComponent implements OnInit{
   public artist: Artist;
+  public albums: Album[];
   public identity;
   public token;
   public url: string;
@@ -22,7 +25,8 @@ export class ArtistDetailComponent implements OnInit{
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _artistService: ArtistService
+    private _artistService: ArtistService,
+    private _albumService: AlbumService
   ){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
@@ -42,11 +46,26 @@ export class ArtistDetailComponent implements OnInit{
         response => {
           if(!response.artist){
             this._router.navigate(['/']);
-
           }else{
             this.artist = response.artist;
 
             //Sacar los albums del artista
+            this._albumService.getAlbums(this.token, response.artist._id).subscribe(
+              response =>{
+                if(!response.albums){
+                  this.alertMessage = "Este Artista No tien Albums";
+                }else{
+                  this.albums = response.albums;
+                  console.log(this.albums);
+                };
+              },
+              error => {
+                var errorMessage = <any>error;
+                if(errorMessage != null){
+                var body = JSON.parse(error._body);
+                }
+              }
+            );
           }
         },
         error => {
