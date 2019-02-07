@@ -21,6 +21,15 @@
       <textarea  #year="ngModel" name="year" [(ngModel)]="album.year" required class="form-control"></textarea>
       <span *ngIf="!year.valid && year.touched">El Año es obligatorio</span>
     </p>
+    <div *ngIf="is_edit">
+      <div class="image_for_edit" *ngIf='album.image && album.image != "null"'>
+        <img class="album_image_for_edit" src="{{url + 'get-image-album/' + album.image}}">
+      </div>
+      <p>
+        <label>Sube la imagen del Album</label>
+        <input type="file" placeholder="Subir imagen..." (change)='fileChangeEvent($event)'>
+      </p>
+    </div>
     <input type="submit" value="{{titulo}}" [disabled]="!formAlbum.form.valid" class="btn btn-success">
   </form>
 </div>
