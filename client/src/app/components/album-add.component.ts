@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { ArtistService } from '../services/artist.service';
+import { AlbumService } from '../services/album.service';
 import { GLOBAL } from '../services/global';
 import { Artist } from '../models/artist';
 import { Album } from '../models/album';
@@ -9,7 +10,7 @@ import { Album } from '../models/album';
 @Component({
   selector: 'album-add',
   templateUrl: '../views/album-add.html',
-  providers: [UserService, ArtistService]
+  providers: [UserService, ArtistService, AlbumService]
 })
 
 export class AlbumAddComponent implements OnInit{
@@ -26,7 +27,8 @@ export class AlbumAddComponent implements OnInit{
     private _route: ActivatedRoute,
     private _router: Router,
     private _userService: UserService,
-    private _artistService: ArtistService
+    private _artistService: ArtistService,
+    private _albumService: AlbumService
   ){
     this.titulo = 'Añadir Album';
     this.identity = this._userService.getIdentity();
@@ -43,6 +45,27 @@ export class AlbumAddComponent implements OnInit{
     this._route.params.forEach((params: Params) => {
       let artist_id = params['artist'];
       this.album.artist = artist_id;
+
+      this._albumService.addAlbum(this.token, this.album).subscribe(
+        response => {
+            if(!response.album){
+            this.alertMessage = "Error en el Servidor";
+          }else{
+            this.alertMessage = "Album Creado correctamente";
+            this.album = response.album;
+            //this._router.navigate(['/editar-artista', response.artist._id]);
+          }
+        },
+        error => {
+          var errorMessage = <any>error;
+            if(errorMessage != null){
+            var body = JSON.parse(error._body);
+            this.alertMessage = body.message;
+            //console.log(error);
+          }
+        }
+      );
+
     });
     console.log(this.album);
   }
