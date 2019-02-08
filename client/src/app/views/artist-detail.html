@@ -24,7 +24,7 @@
             <a [routerLink]="['/editar-album/', album._id]" class="btn btn-sm btn-warning">Editar</a>
             <a (click)="onDeleteConfirm(album._id)" class="btn btn-sm btn-danger">Borrar</a>
           </div>
-          <div class="seguro" *ngIf="confirmado == artist._id">
+          <div class="seguro" *ngIf="confirmado == album._id">
             <a (click)="onDeleteAlbum(album._id)" class="btn btn-sm btn-danger">Eliminar</a>
             <a (click)="onCancelAlbum()" class="btn btn-sm btn-primary">Cancelar</a>
           </div>
