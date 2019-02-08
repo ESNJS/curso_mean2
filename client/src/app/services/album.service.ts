@@ -15,6 +15,7 @@ export class AlbumService{
   }
 
   getAlbums(token, artistId = null){
+    console.log("hola puto");
     let headers = new Headers({
       'Content-Type':'application/json',
       'Authorization': token

@@ -53,7 +53,7 @@ export class ArtistDetailComponent implements OnInit{
             this._albumService.getAlbums(this.token, response.artist._id).subscribe(
               response =>{
                 if(!response.albums){
-                  this.alertMessage = "Este Artista No tien Albums";
+                  this.alertMessage = "Este Artista No tiene Albums";
                 }else{
                   this.albums = response.albums;
                   console.log(this.albums);
@@ -77,9 +77,4 @@ export class ArtistDetailComponent implements OnInit{
       );
     });
   }
-
-
-
-
-
 }
