@@ -1,13 +1,14 @@
 import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { SongService } from '../services/song.service';
 import { GLOBAL } from '../services/global';
 import { Song } from '../models/song';
 
 @Component({
   selector: 'song-add',
   templateUrl: '../views/song-add.html',
-  providers: [UserService]
+  providers: [UserService, SongService]
 })
 
 export class SongAddComponent implements OnInit{
@@ -22,7 +23,8 @@ export class SongAddComponent implements OnInit{
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
-    private _userService: UserService
+    private _userService: UserService,
+    private _songService: SongService
   ){
     this.titulo = 'Añadir Cancion';
     this.identity = this._userService.getIdentity();
@@ -41,16 +43,16 @@ export class SongAddComponent implements OnInit{
       this.song.album = params['album'];
 
       console.log(this.song);
-/*
-      this._albumService.addAlbum(this.token, this.album).subscribe(
+
+      this._songService.addSong(this.token, this.song).subscribe(
         response => {
-            if(!response.album){
+            if(!response.song){
             this.alertMessage = "Error en el Servidor";
           }else{
-            this.alertMessage = "Album Creado correctamente";
-            this.album = response.album;
+            this.alertMessage = "Cancion Creado correctamente";
+            this.song = response.song;
 
-            this._router.navigate(['/editar-album', response.album._id]);
+            //this._router.navigate(['/editar-album', response.album._id]);
           }
         },
         error => {
@@ -62,7 +64,7 @@ export class SongAddComponent implements OnInit{
           }
         }
       );
-*/
+
     });
 
 
