@@ -83,7 +83,7 @@ export class ArtistDetailComponent implements OnInit{
     this.confirmado = id;
   };//----onDeleteConfirm
 
-  onCancelArtist(){
+  onCancelAlbum(){
     this.confirmado = null;
   }
 

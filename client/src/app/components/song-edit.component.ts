@@ -94,7 +94,7 @@ export class SongEditComponent implements OnInit{
                 }
               );
 
-            //this._router.navigate(['/editar-album', response.album._id]);
+            this._router.navigate(['/editar-cancion', response.song._id]);
           }
         },
         error => {
